@@ -1,0 +1,314 @@
+body{
+    font-size: 16px;
+}
+
+/* Navigaton */
+.navigation{
+    /*background-color: red;
+    */border: solid 2px  red;
+    
+}
+.navbar-brand img{
+    width: 100px;
+}
+.navbar_button{
+    display: none;
+    
+}
+
+.nav_links a{
+    text-decoration: none;
+    color: #f44336;
+    font-weight: bold;
+    font-size: 1.4em;
+}
+.nav_link1{
+    display:inline-block;
+    margin: 0 20px;
+    padding: 5px;
+    color: #f46526 !important;
+    /* border: solid 1px #f46526; */
+}
+.nav_link2{
+    /* border: solid 1px #f44336 ; */
+    padding: 5px;
+    
+}
+
+.nav_link1:hover{
+    background-color: #f4642691;
+    color:black !important;
+    transition: 1s;
+    -webkit-transition: 1s;
+    -moz-transition: 1s;
+    -ms-transition: 1s;
+    -o-transition: 1s;
+}
+.nav_link2:hover{
+    background-color: #f4433683;
+    color:black !important;
+    transition: 1s;
+    -webkit-transition: 1s;
+    -moz-transition: 1s;
+    -ms-transition: 1s;
+    -o-transition: 1s;
+}
+.nav_link1:active{
+    background-color: #f4642691;
+    border: solid 1px #f46526 ;
+    border-radius: 10px;
+    padding: 5px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
+}
+.nav_link2:active{
+    background-color: #f4433683;
+    border: solid 1px #f44336 ;
+    border-radius: 10px;
+    padding: 5px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
+}
+.nav_links{
+    position: relative;
+    display: inline-block;
+}
+.nav_links .tooltiptext_of_link1,.tooltiptext_of_link2{
+    visibility: hidden;
+    background-color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px;
+    position: absolute;
+    z-index: 1;
+    top: 150%;
+    margin-left: -75px;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+.nav_links .tooltiptext_of_link1{
+    border: solid 2px #f46526;
+    color: #f46526;
+    left:25%;
+    width: 170px;
+}
+.nav_links .tooltiptext_of_link2{
+    border: solid 2px #f44336;
+    color: #f44336;
+    left: 60%;
+    width: 170px;
+}
+.nav_links .tooltiptext_of_link1::after,.tooltiptext_of_link2::after {
+    content: "";
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: #f44336 transparent transparent transparent;
+}
+.nav_links .tooltiptext_of_link1::after{
+    border-color: #f46526 transparent transparent transparent;
+}
+.nav_link1:hover .tooltiptext_of_link1{
+    visibility: visible;
+    opacity: 1;
+}
+.nav_link2:hover .tooltiptext_of_link2{
+    visibility: visible;
+    opacity: 1;
+}
+
+.tooltip_of_button {
+    position: relative;
+    display: inline-block;
+}
+
+.tooltip_of_button .tooltiptext {
+    visibility: hidden;
+    width: 140px;
+    background-color: #555;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px;
+    position: absolute;
+    z-index: 1;
+    bottom: 150%;
+    left: 50%;
+    margin-left: -75px;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.tooltip_of_button .tooltiptext::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: #555 transparent transparent transparent;
+}
+
+.tooltip_of_button:hover .tooltiptext {
+    visibility: visible;
+    opacity: 1;
+}
+
+/* Content */
+
+.container{
+    
+    margin-top:20px;
+    /* border: dotted 2px black; */
+}
+.container__ul{
+    display: flex;
+    flex-direction: column;
+}
+.container__passwords{
+    height: 750px;
+    overflow: auto;
+}
+.explanation_list{
+    text-align: center;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+.passwords_list{
+    text-align: center;
+    border: solid 1px ;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    padding: 10px;
+    margin: 10px;
+}
+.passwords_list a{
+    color: #f44336;
+}
+.login{
+    padding: 5px;
+    background-color: rgba(128, 128, 128, 0.322);
+    border: solid 1px;
+}
+.passwords_list input{
+    border: solid 1px;
+    background-color:rgba(128, 128, 128, 0.322);
+    border-radius:0 10px 10px 0;
+    -webkit-border-radius:0 10px 10px 0;
+    -moz-border-radius:0 10px 10px 0;
+    -ms-border-radius:0 10px 10px 0;
+    -o-border-radius:0 10px 10px 0;
+    padding: 5px;
+}
+
+.content_button{
+    background-color: #f44336;
+    border: solid 0px;
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
+}
+
+
+/* Footer */
+.page_footer{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 50px;
+    background-color: #d65b53;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+.page_footer a{
+    color: rgb(111, 209, 176);
+}
+
+@media screen and (max-width: 767px) {
+    .passwords_list a{
+        margin: 5px;
+    }
+    .login{
+        margin: 5px;
+    }
+    .passwords_list input{
+        margin: 5px;
+        border-radius:0;
+        -webkit-border-radius:0;
+        -moz-border-radius:0;
+        -ms-border-radius:0;
+        -o-border-radius:0;
+    }
+  }
+
+
+
+
+.content-section{
+    height: 80vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+
+
+
+.content-section form{
+    overflow: auto;
+    padding: 40px;
+    border:solid rgba(0, 0, 0, 0.418) 1px;
+    border-radius: 20px;
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    -ms-border-radius: 20px;
+    -o-border-radius: 20px;
+}
+ form h3{
+     font-family: Georgia, 'Times New Roman', Times, serif;
+     color: #f44336;
+ }
+
+.header{
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    color: #f44336;
+}
+h3, h2{
+    font-family: Georgia, 'Times New Roman', Times, serif;
+     color: #f44336;
+}
+
+
+.content__header{
+    margin-bottom: 30px;
+}
+
+.content__content{
+    margin-left: 20px;
+
+}
+.content__content p{
+    margin-top: 20px ;
+    margin-left:20px ;
+}
+.content__content .content__second_p{
+    margin-bottom: 5px;
+}
+.content__content .text-muted{
+    margin-top:0 ;
+    font-size: 0.8rem;
+}

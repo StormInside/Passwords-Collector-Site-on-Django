@@ -1,0 +1,60 @@
+{% extends "html/base.html" %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block title %}PassCollectorExample{% endblock %}
+{% block style %}<link rel="stylesheet" href="{% static 'css/style.css' %}">{% endblock %}
+{% block navigation %}
+<div class="container-fluid">
+    <div class="row">
+            <div class=" col-xl-12 navbar-container navigation ">
+                    <nav class="navbar navbar-light col-lg-8 offset-lg-2">
+                <a class="navbar-brand" href="/"><img src="{% static 'pictures/logo1.png' %}" alt=""></a>
+                
+            </nav>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block content %}
+{% if messages %}
+  {% for message in messages %}
+    <div class='alert alert-{{ message.tags }}'>
+      {{ message }}
+    </div>
+  {% endfor %}
+{% endif %}
+<div class="content-section container">
+    <form action="" method="POST">
+        {% csrf_token %}
+        <fieldset class="form-group">
+            <legend class="border-bottom mb-4"><h3>Log In:</h3></legend>
+            {{ form|crispy }}
+        </fieldset>
+        <div class="form-group">
+            <button class="btn btn-outline-info" type="submit">Login</button>
+        </div>
+    </form>
+    <div class=" pt-3">
+        <small class="text-muted">
+            Dont Have An Account?
+            <a href="{% url 'register' %}" class="ml-2">Register</a>
+        </small>
+      </div>
+</div>
+
+{% endblock %}
+
+{% block footer %}
+
+  <!-- <footer class="page-footer font-small page_footer">
+    <div class="conntainer-fluid text-center page_footer_content">For any questions: <a href="storminside4766778@gmail.com">mail</a></div>
+  </footer> -->
+
+{% endblock %}
+
+{% block scripts %}
+
+
+{% endblock %}

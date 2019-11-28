@@ -1,0 +1,88 @@
+{% extends "html/base.html" %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block title %}PassCollectorExample{% endblock %}
+{% block style %}<link rel="stylesheet" href="{% static 'css/style.css' %}">{% endblock %}
+{% block navigation %}
+<div class="container-fluid">
+    <div class="row">
+            <div class=" col-xl-12 navbar-container navigation ">
+                    <nav class="navbar navbar-light col-lg-8 offset-lg-2">
+                <a class="navbar-brand" href="/"><img src="{% static 'pictures/logo1.png' %}" alt=""></a>
+                
+                <div class="nav_links navbar-right collapse d-md-block" id="navbarToggleExternalContent">
+                        {% if user.is_authenticated %}
+                        <a href="{% url 'loged_in' %}" class="nav_link nav_link1 ">Passwords
+                          </a>
+                          <a href="{% url 'logout' %}" class="nav_link nav_link2 ">Logout
+                        </a>
+                      {% else %}  
+                        <a href="{% url 'login' %}" class="nav_link nav_link1 ">Login
+                          <span class="tooltiptext_of_link1">Login to your account</span>
+                        </a>
+                        <a href="/example/" class="nav_link nav_link2 ">Example
+                            <span class="tooltiptext_of_link2">Example page</span>
+                        </a>
+                      {% endif %} 
+                </div>
+                <button class="navbar-toggler d-md-none" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+                      <span class="navbar-toggler-icon"></span>
+                </button>
+            </nav>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
+{% block content %}
+<div class="wrapper">
+  <main class="container">
+      {% if messages %}
+      {% for message in messages %}
+        <div class='alert alert-{{ message.tags }}'>
+          {{ message }}
+        </div>
+      {% endfor %}
+    {% endif %}
+    <div class="container__passwords">
+        <div class="new-pass-form" id="new-pass-form">
+          <form action="" method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            <fieldset class="form-group">
+              <legend class="border-bottom mb-4">Update Password</legend>
+              {{ form|crispy }}
+            </fieldset>
+            <div class="buttons form-group">
+              <button class= "btn btn-outline-info" type="submit">
+                      Update
+              </button>
+              <a class= "btn btn-outline-danger" href="{% url 'password_delete' object.id %}">
+                      Delete
+              </a>
+            </div>
+          </form>
+        
+    
+    </div>
+  </main>
+</div>
+<script>
+
+</script>
+{% endblock %}
+
+{% block footer %}
+
+  <!-- <footer class="page-footer font-small page_footer">
+    <div class="conntainer-fluid text-center page_footer_content">For any questions: <a href="storminside4766778@gmail.com">mail</a></div>
+  </footer> -->
+
+{% endblock %}
+
+{% block scripts %}
+
+
+
+{% endblock %}

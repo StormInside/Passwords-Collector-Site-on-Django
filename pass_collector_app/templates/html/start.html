@@ -1,0 +1,79 @@
+{% extends "html/base.html" %}
+{% load static %}
+
+{% block title %}PassCollectorExample{% endblock %}
+{% block style %}<link rel="stylesheet" href="{% static 'css/style.css' %}">{% endblock %}
+{% block navigation %}
+<div class="container-fluid">
+    <div class="row">
+        <div class=" col-xl-12 navbar-container navigation ">
+            <nav class="navbar navbar-light col-lg-8 offset-lg-2">
+                <a class="navbar-brand" href="/"><img src="{% static 'pictures/logo1.png' %}" alt=""></a>
+                
+                <div class="nav_links navbar-right collapse d-md-block" id="navbarToggleExternalContent">
+                  {% if user.is_authenticated %}
+                    <a href="{% url 'loged_in' %}" class="nav_link nav_link1 ">Passwords
+                        <span class="tooltiptext_of_link1">Your passwords</span>
+                      </a>
+                      <a href="{% url 'logout' %}" class="nav_link nav_link2 ">Logout
+                    </a>
+                  {% else %}  
+                    <a href="{% url 'login' %}" class="nav_link nav_link1 ">Login
+                      <span class="tooltiptext_of_link1">Login to your account</span>
+                    </a>
+                    <a href="/example/" class="nav_link nav_link2 ">Example
+                        <span class="tooltiptext_of_link2">Example page</span>
+                    </a>
+                  {% endif %} 
+                </div>
+                <button class="navbar-toggler d-md-none" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+                      <span class="navbar-toggler-icon"></span>
+                </button>
+            </nav>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
+
+
+{% block content %}
+<div class="wrapper">
+  
+  <main class="container">
+    <div class="content">
+      <div class="content__header">
+        <h2 class="content__h2">Password Collector</h2>
+        <h4 class="border-top content__h4">Here you can save all your password and easily get them everywhere you want!</h3>
+      </div>
+        <div class="content__content">
+          <div class="capabilities">
+          <h3 class="content__h3 border-bottom">Capabilities:</h3>
+          <p class="content__first_p">You can register and login in the "Login" page.</p>
+          <p class="content__second_p">You can see and manage all your passwords in the "Passwords" page.</p>
+          <p class="text-muted add_info">It will appear after login in.</p>
+          <p class="content__third_p">To see the example go to "Example" page.</p>
+        </div>
+        <div class="screenshots">
+        </div>
+      </div>
+      <div class="content__footer">
+
+      </div>
+    </div>
+  </main>
+</div>
+{% endblock %}
+
+{% block footer %}
+
+  <footer class="page-footer font-small page_footer">
+    <div class="conntainer-fluid text-center page_footer_content">For any questions: <a href="storminside4766778@gmail.com">mail</a></div>
+  </footer>
+
+{% endblock %}
+
+{% block scripts %}
+
+{% endblock %}

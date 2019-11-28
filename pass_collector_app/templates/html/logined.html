@@ -1,0 +1,150 @@
+{% extends "html/base.html" %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block title %}PassCollectorExample{% endblock %}
+{% block style %}<link rel="stylesheet" href="{% static 'css/nav.login.css' %}">{% endblock %}
+{% block navigation %}
+<div class="container-fluid">
+    <div class="row">
+            <div class=" col-xl-12 navbar-container navigation ">
+                    <nav class="navbar navbar-light col-lg-8 offset-lg-2">
+                <a class="navbar-brand" href="/"><img src="{% static 'pictures/logo1.png' %}" alt=""></a>
+                
+                <div class="nav_links navbar-right collapse d-md-block" id="navbarToggleExternalContent">
+                        {% if user.is_authenticated %}
+                        <a href="{% url 'loged_in' %}" class="nav_link nav_link1 ">Passwords
+                          </a>
+                          <a href="{% url 'logout' %}" class="nav_link nav_link2 ">Logout
+                        </a>
+                      {% else %}  
+                        <a href="{% url 'login' %}" class="nav_link nav_link1 ">Login
+                          <span class="tooltiptext_of_link1">Login to your account</span>
+                        </a>
+                        <a href="/example/" class="nav_link nav_link2 ">Example
+                            <span class="tooltiptext_of_link2">Example page</span>
+                        </a>
+                      {% endif %} 
+                </div>
+                <button class="navbar-toggler d-md-none" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+                      <span class="navbar-toggler-icon"></span>
+                </button>
+            </nav>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
+{% block content %}
+<div class="wrapper">
+  <main class="container">
+      {% if messages %}
+      {% for message in messages %}
+        <div class='alert alert-{{ message.tags }}'>
+          {{ message }}
+        </div>
+      {% endfor %}
+    {% endif %}
+    <div class="container__passwords">
+      
+        <div class="new-pass-form" id="new-pass-form">
+          <form action="" method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            <fieldset class="form-group">
+              <legend class="border-bottom mb-4">Add New Password</legend>
+              {{ form1|crispy }}
+            </fieldset>
+            <div class="form-group">
+              <button class="btn btn-outline-info" type="submit">Add</button>
+            </div>
+          </form>
+        </div>
+        <div class="add-button">
+            <a class="link_user" href="update/">
+              <h3>{{user.username}}</h3>
+            </a>
+           
+           <button class="btn btn-outline-info" id="btn" onclick="appear()">
+              Add Password
+            </button>
+        </div>
+        <ul class="container__ul">
+            <li class="explanation_list">
+              <h6 class="col-md-3">Source:</h6>
+              <h6 class="col-md-3">Login:</h6>
+              <h6 class="col-md-6">Password:</h6>
+           </li>
+          {% if passwords %}
+            {% for a in passwords %}
+            <li class="passwords_list">
+              <a class="col-md-3" href="{{a.link_to_site}}"><h5>{{a.sourse_name}}</h5></a>
+              <span class="login col-md-3">{{a.user_login}}<br></span>
+              <div class="field_and_button col-md-6">
+                <input type="text" value="{{a.user_password}}" id="{{a.sourse_name}},{{a.user_login}}">
+                <div class="buttons">
+                <div class="tooltip_of_button">
+                  <button class="content_button" onclick="CopyFunction('{{a.sourse_name}},{{a.user_login}}','{{a.user_login}},{{a.sourse_name}}')">
+                    <span class="tooltiptext" id="{{a.user_login}},{{a.sourse_name}}">Copy password</span>
+                    Copy
+                  </button>
+                </div>
+                <div class="tooltip_of_button">
+                    <a href="{% url 'password_detail' a.id %}">
+                      <button class="content_button">
+                        <span class="tooltiptext" id="{{a.user_login}},{{a.sourse_name}}">Change or delete</span>
+                        Change
+                      </button></a>
+                </div>
+              </div>
+              </div>
+              {% if a.aller_pass_update %}
+                <div class="alert-text border-top">
+                <p class="text-muted">Your pass have been created more than month ago, we recomend you to change it.</p></div>
+              {% endif %}
+            </li>
+            {% endfor %}
+          {% else %}
+            <h3 class="container">No passwords</h3>
+          {% endif %}
+        </ul> 
+    </div>
+  </main>
+</div>
+<script>
+
+</script>
+{% endblock %}
+
+{% block footer %}
+
+  <!-- <footer class="page-footer font-small page_footer">
+    <div class="conntainer-fluid text-center page_footer_content">For any questions: <a href="storminside4766778@gmail.com">mail</a></div>
+  </footer> -->
+
+{% endblock %}
+
+{% block scripts %}
+
+<script>
+    function CopyFunction(field_id,span_id){
+      var copyText = document.getElementById(field_id);
+      copyText.select();
+      document.execCommand("copy");
+      var tooltip = document.getElementById(span_id);
+      tooltip.innerHTML = "Password copied!";}
+    function appear(){
+      var e=document.getElementById('new-pass-form')
+      var b=document.getElementById('btn')
+      if(e.style.display == 'block'){
+          e.style.display = 'none';
+          b.textContent = "Add Password"
+      }else{
+          e.style.display = 'block';
+          b.textContent = "Close"
+      }
+    }
+
+  </script>
+
+{% endblock %}
